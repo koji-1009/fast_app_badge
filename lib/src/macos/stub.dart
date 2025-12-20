@@ -1,0 +1,1 @@
+void updateBadge(int count) {}
