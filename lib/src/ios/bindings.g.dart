@@ -6,7 +6,9 @@ import 'dart:ffi' as ffi;
 import 'package:objective_c/objective_c.dart' as objc;
 import 'package:ffi/ffi.dart' as pkg_ffi;
 
-late final _class_UIApplication = objc.getClass("UIApplication");
+late final _class_UNUserNotificationCenter = objc.getClass(
+  "UNUserNotificationCenter",
+);
 late final _sel_isKindOfClass_ = objc.registerName("isKindOfClass:");
 final _objc_msgSend_19nvye5 = objc.msgSendPointer
     .cast<
@@ -27,7 +29,9 @@ final _objc_msgSend_19nvye5 = objc.msgSendPointer
     >();
 typedef instancetype = ffi.Pointer<objc.ObjCObjectImpl>;
 typedef Dartinstancetype = objc.ObjCObject;
-late final _sel_sharedApplication = objc.registerName("sharedApplication");
+late final _sel_currentNotificationCenter = objc.registerName(
+  "currentNotificationCenter",
+);
 final _objc_msgSend_151sglz = objc.msgSendPointer
     .cast<
       ffi.NativeFunction<
@@ -43,6 +47,165 @@ final _objc_msgSend_151sglz = objc.msgSendPointer
         ffi.Pointer<objc.ObjCSelector>,
       )
     >();
+late final _sel_requestAuthorizationWithOptions_completionHandler_ = objc
+    .registerName("requestAuthorizationWithOptions:completionHandler:");
+final _objc_msgSend_14g4ld6 = objc.msgSendPointer
+    .cast<
+      ffi.NativeFunction<
+        ffi.Void Function(
+          ffi.Pointer<objc.ObjCObjectImpl>,
+          ffi.Pointer<objc.ObjCSelector>,
+          ffi.UnsignedLong,
+          ffi.Pointer<ffi.Void>,
+        )
+      >
+    >()
+    .asFunction<
+      void Function(
+        ffi.Pointer<objc.ObjCObjectImpl>,
+        ffi.Pointer<objc.ObjCSelector>,
+        int,
+        ffi.Pointer<ffi.Void>,
+      )
+    >();
+late final _sel_init = objc.registerName("init");
+late final _sel_new = objc.registerName("new");
+late final _sel_allocWithZone_ = objc.registerName("allocWithZone:");
+final _objc_msgSend_1cwp428 = objc.msgSendPointer
+    .cast<
+      ffi.NativeFunction<
+        ffi.Pointer<objc.ObjCObjectImpl> Function(
+          ffi.Pointer<objc.ObjCObjectImpl>,
+          ffi.Pointer<objc.ObjCSelector>,
+          ffi.Pointer<objc.NSZone>,
+        )
+      >
+    >()
+    .asFunction<
+      ffi.Pointer<objc.ObjCObjectImpl> Function(
+        ffi.Pointer<objc.ObjCObjectImpl>,
+        ffi.Pointer<objc.ObjCSelector>,
+        ffi.Pointer<objc.NSZone>,
+      )
+    >();
+late final _sel_alloc = objc.registerName("alloc");
+
+/// UNUserNotificationCenter
+extension type UNUserNotificationCenter._(objc.ObjCObject object$)
+    implements objc.ObjCObject, objc.NSObject {
+  /// Constructs a [UNUserNotificationCenter] that points to the same underlying object as [other].
+  UNUserNotificationCenter.as(objc.ObjCObject other) : object$ = other {
+    assert(isA(object$));
+  }
+
+  /// Constructs a [UNUserNotificationCenter] that wraps the given raw object pointer.
+  UNUserNotificationCenter.fromPointer(
+    ffi.Pointer<objc.ObjCObjectImpl> other, {
+    bool retain = false,
+    bool release = false,
+  }) : object$ = objc.ObjCObject(other, retain: retain, release: release) {
+    assert(isA(object$));
+  }
+
+  /// Returns whether [obj] is an instance of [UNUserNotificationCenter].
+  static bool isA(objc.ObjCObject obj) => _objc_msgSend_19nvye5(
+    obj.ref.pointer,
+    _sel_isKindOfClass_,
+    _class_UNUserNotificationCenter,
+  );
+
+  /// alloc
+  static UNUserNotificationCenter alloc() {
+    final $ret = _objc_msgSend_151sglz(
+      _class_UNUserNotificationCenter,
+      _sel_alloc,
+    );
+    return UNUserNotificationCenter.fromPointer(
+      $ret,
+      retain: false,
+      release: true,
+    );
+  }
+
+  /// allocWithZone:
+  static UNUserNotificationCenter allocWithZone(ffi.Pointer<objc.NSZone> zone) {
+    final $ret = _objc_msgSend_1cwp428(
+      _class_UNUserNotificationCenter,
+      _sel_allocWithZone_,
+      zone,
+    );
+    return UNUserNotificationCenter.fromPointer(
+      $ret,
+      retain: false,
+      release: true,
+    );
+  }
+
+  /// currentNotificationCenter
+  static UNUserNotificationCenter currentNotificationCenter() {
+    final $ret = _objc_msgSend_151sglz(
+      _class_UNUserNotificationCenter,
+      _sel_currentNotificationCenter,
+    );
+    return UNUserNotificationCenter.fromPointer(
+      $ret,
+      retain: true,
+      release: true,
+    );
+  }
+
+  /// new
+  static UNUserNotificationCenter new$() {
+    final $ret = _objc_msgSend_151sglz(
+      _class_UNUserNotificationCenter,
+      _sel_new,
+    );
+    return UNUserNotificationCenter.fromPointer(
+      $ret,
+      retain: false,
+      release: true,
+    );
+  }
+
+  /// Returns a new instance of UNUserNotificationCenter constructed with the default `new` method.
+  UNUserNotificationCenter() : this.as(new$().object$);
+}
+
+extension UNUserNotificationCenter$Methods on UNUserNotificationCenter {
+  /// init
+  UNUserNotificationCenter init() {
+    objc.checkOsVersionInternal(
+      'UNUserNotificationCenter.init',
+      iOS: (false, (2, 0, 0)),
+      macOS: (false, (10, 0, 0)),
+    );
+    final $ret = _objc_msgSend_151sglz(
+      object$.ref.retainAndReturnPointer(),
+      _sel_init,
+    );
+    return UNUserNotificationCenter.fromPointer(
+      $ret,
+      retain: false,
+      release: true,
+    );
+  }
+
+  /// requestAuthorizationWithOptions:completionHandler:
+  void requestAuthorizationWithOptions(
+    int options, {
+    required ffi.Pointer<ffi.Void> completionHandler,
+  }) {
+    _objc_msgSend_14g4ld6(
+      object$.ref.pointer,
+      _sel_requestAuthorizationWithOptions_completionHandler_,
+      options,
+      completionHandler,
+    );
+  }
+}
+
+late final _class_UIApplication = objc.getClass("UIApplication");
+late final _sel_sharedApplication = objc.registerName("sharedApplication");
 late final _sel_applicationIconBadgeNumber = objc.registerName(
   "applicationIconBadgeNumber",
 );
@@ -81,27 +244,6 @@ final _objc_msgSend_4sp4xj = objc.msgSendPointer
         int,
       )
     >();
-late final _sel_init = objc.registerName("init");
-late final _sel_new = objc.registerName("new");
-late final _sel_allocWithZone_ = objc.registerName("allocWithZone:");
-final _objc_msgSend_1cwp428 = objc.msgSendPointer
-    .cast<
-      ffi.NativeFunction<
-        ffi.Pointer<objc.ObjCObjectImpl> Function(
-          ffi.Pointer<objc.ObjCObjectImpl>,
-          ffi.Pointer<objc.ObjCSelector>,
-          ffi.Pointer<objc.NSZone>,
-        )
-      >
-    >()
-    .asFunction<
-      ffi.Pointer<objc.ObjCObjectImpl> Function(
-        ffi.Pointer<objc.ObjCObjectImpl>,
-        ffi.Pointer<objc.ObjCSelector>,
-        ffi.Pointer<objc.NSZone>,
-      )
-    >();
-late final _sel_alloc = objc.registerName("alloc");
 
 /// UIApplication
 extension type UIApplication._(objc.ObjCObject object$)

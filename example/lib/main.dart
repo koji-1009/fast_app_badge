@@ -1,8 +1,8 @@
 import 'package:fast_app_badge/fast_app_badge.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const MyApp());
 }
 
@@ -47,12 +47,7 @@ class _BadgeDemoPageState extends State<BadgeDemoPage> {
   @override
   void initState() {
     super.initState();
-    final plugin = FlutterLocalNotificationsPlugin();
-    plugin
-        .resolvePlatformSpecificImplementation<
-          IOSFlutterLocalNotificationsPlugin
-        >()
-        ?.requestPermissions(alert: true, badge: true, sound: true);
+    FastAppBadge.requestBadgePermission();
   }
 
   @override

@@ -3,7 +3,12 @@ import 'package:ffigen/ffigen.dart';
 
 final config = FfiGenerator(
   headers: Headers(entryPoints: [Uri.file('stub_headers/ios.h')]),
-  objectiveC: ObjectiveC(interfaces: Interfaces.includeSet({'UIApplication'})),
+  objectiveC: ObjectiveC(
+    interfaces: Interfaces.includeSet({
+      'UIApplication',
+      'UNUserNotificationCenter',
+    }),
+  ),
   output: Output(dartFile: Uri.file('lib/src/ios/bindings.g.dart')),
 );
 

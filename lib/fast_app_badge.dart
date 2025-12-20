@@ -5,6 +5,16 @@ import 'package:flutter/foundation.dart';
 final class FastAppBadge {
   const FastAppBadge._();
 
+  static void requestBadgePermission({
+    bool badge = true,
+    bool sound = true,
+    bool alert = true,
+  }) {
+    if (kIsWeb) return;
+    if (defaultTargetPlatform != TargetPlatform.iOS) return;
+    ios.requestBadgePermission(badge: badge, sound: sound, alert: alert);
+  }
+
   static void clearBadge() {
     if (kIsWeb) return;
     switch (defaultTargetPlatform) {

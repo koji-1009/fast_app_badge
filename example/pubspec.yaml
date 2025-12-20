@@ -12,7 +12,6 @@ dependencies:
     sdk: flutter
   fast_app_badge:
     path: ../
-  flutter_local_notifications: ^19.0.0
 
 dev_dependencies:
   flutter_test:
