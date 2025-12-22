@@ -1,16 +1,3 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
-
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/tools/pub/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/to/develop-packages).
--->
-
 A lightweight and high-performance Flutter plugin for managing application badge counts exclusively on iOS and macOS. It leverages Dart's Foreign Function Interface (FFI) for direct and efficient communication with native APIs.
 
 ## Why "Fast"? (FFI Advantage)
@@ -22,17 +9,6 @@ Unlike many Flutter plugins that rely on platform channels (MethodChannel) for c
 - Set the application badge count to a specific number.
 - Clear the application badge count (set to 0).
 - Request permission for displaying notifications and badges on iOS.
-
-## Getting started
-
-To use this package, add `fast_app_badge` as a dependency in your `pubspec.yaml` file:
-
-```yaml
-dependencies:
-  fast_app_badge: ^0.0.1
-```
-
-Then, run `flutter pub get` to fetch the package.
 
 ## Usage
 
