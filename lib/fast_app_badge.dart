@@ -32,9 +32,9 @@ final class FastAppBadge {
   static void clearBadge() {
     if (kIsWeb) return;
     switch (defaultTargetPlatform) {
-      case TargetPlatform.iOS:
+      case .iOS:
         ios.updateBadge(0);
-      case TargetPlatform.macOS:
+      case .macOS:
         macos.updateBadge(0);
       default:
         return;
@@ -49,9 +49,9 @@ final class FastAppBadge {
   static void updateBadge(int count) {
     if (kIsWeb) return;
     switch (defaultTargetPlatform) {
-      case TargetPlatform.iOS:
+      case .iOS:
         ios.updateBadge(count);
-      case TargetPlatform.macOS:
+      case .macOS:
         macos.updateBadge(count);
       default:
         return;
